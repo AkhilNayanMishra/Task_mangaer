@@ -15,6 +15,19 @@ app.use(cors({
 		'http://localhost:5174',
 		'https://task-mangaer-one.vercel.app'
 	],
+	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+	allowedHeaders: ['Content-Type', 'Authorization'],
+	credentials: true
+}));
+
+// Respond to preflight requests for all routes
+app.options('*', cors({
+	origin: [
+		'http://localhost:5174',
+		'https://task-mangaer-one.vercel.app'
+	],
+	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+	allowedHeaders: ['Content-Type', 'Authorization'],
 	credentials: true
 }));
 app.use(express.json());
