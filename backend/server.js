@@ -8,8 +8,15 @@ const taskRoutes = require('./routes/taskRoutes');
 
 dotenv.config();
 const app = express();
-// Allow cross-origin requests in production; restrict later as needed
-app.use(cors({ origin: '*', credentials: true }));
+// Allow cross-origin requests from the dev server and the production frontend
+// Update or restrict origins as needed. For quick unblock you can use origin: '*'
+app.use(cors({
+	origin: [
+		'http://localhost:5174',
+		'https://task-mangaer-one.vercel.app'
+	],
+	credentials: true
+}));
 app.use(express.json());
 
 connectDB();
